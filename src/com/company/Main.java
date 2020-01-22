@@ -27,8 +27,9 @@ class ConnectionPool {
 
         @Override
         public synchronized void run() {
-            System.out.println("\nЗадача очистки бездействующих соединений запущена");
-            System.out.printf("Время %1$tT %1$td.%1$tm.%1$tY\n", new Date());
+            System.out.printf("\nЗадача очистки бездействующих соединений запущена\n" +
+                    "Время %1$tT %1$td.%1$tm.%1$tY\n", new Date());
+
 
 
             for (int i = 0; i < availableConnections.size(); i++) {
@@ -49,7 +50,7 @@ class ConnectionPool {
 
 
 
-            System.out.println("\nЗадача очистки бездействующих отработала\n");
+            System.out.println("Задача очистки бездействующих отработала\n");
             completeTask();
 
         }
@@ -110,9 +111,10 @@ class ConnectionPool {
     private void printCurrentConn()
     {
         System.out.println("\nТекущее состояние пула");
-        System.out.printf("Время %1$tT %1$td.%1$tm.%1$tY\n", new Date());
-        System.out.printf("В пуле использованых %d соединений\n",usedConnections.size());
-        System.out.printf("В пуле бездействующих %d соединений\n\n", availableConnections.size());
+        System.out.printf("Время %1$tT %1$td.%1$tm.%1$tY\n" +
+                "В пуле использованых %2$d соединений\n" +
+                "В пуле бездействующих %3$d соединений\n\n", new Date(),usedConnections.size(), availableConnections.size());
+
     }
 
 
